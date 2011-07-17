@@ -16,10 +16,10 @@ int main(){
     printf("Select Task: ");
     scanf_s("%d", &n);
 
-    if ( (n<1) & (n>31) | !Task[n])
-        printf("Task incorrect or unavialable");
-    else
+    if ( (n>=1) & (n<=31) & (Task[n]) )
         Func[n]();
+    else
+        printf("Task incorrect or unavialable");
 
 	return 0;
 }
