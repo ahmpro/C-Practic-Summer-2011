@@ -2,6 +2,7 @@
 
 #include "task02.h"
 #include "task05.h"
+#include "task07.h"
 #include "task24.h"
 #include "task26.h"
 #include "task27.h"
@@ -13,6 +14,7 @@ int main(){
     int n = 0;
     Task[2] = 1; Func[2] = task02;
     Task[5] = 1; Func[5] = task05;
+    Task[7] = 1; Func[7] = task07;
     Task[24] = 1; Func[24] = task24;
     Task[26] = 1; Func[26] = task26;
     Task[27] = 1; Func[27] = task27;
