@@ -17,7 +17,7 @@ void task02()
     {
         // fill A,B
         for(i=0; i<n; i++)
-            for(j=0; j<n; j++) { A[i][j] = 1.0+rand()%15; B[i][j] = 1.0+rand()%15; }
+            for(j=0; j<n; j++) { A[i][j] = 0.0+rand()%15; B[i][j] = 0.0+rand()%15; }
         // Print A,B
         printf("A:\n"); for(i=0; i<n; i++) { for(j=0; j<n; j++) printf("%8.3f ",A[i][j]); printf("\n"); }
         printf("B:\n"); for(i=0; i<n; i++){ for(j=0; j<n; j++) printf("%8.3f ",B[i][j]); printf("\n"); }
