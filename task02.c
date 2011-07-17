@@ -5,8 +5,8 @@
 void task02()
 {
     float A[10][10] = {0}, B[10][10] = {0}, D[10][10] = {0}, F[10][10] = {0};
-    int i,j,n,k, maxI,minI;
-	float min,max;
+    int i, j, n, k;
+	float min, max;
 
     printf("Enter the number of dimensions: ");
     scanf_s("%d",&n);
@@ -35,33 +35,28 @@ void task02()
         // Print D
         printf("D:\n"); for(i=0; i<n; i++) { for(j=0; j<n; j++) printf("%8.3f ",D[i][j]); printf("\n"); }
 		//
-        i = 0;
-		min = D[i][i]; minI=i; max = D[i][i]; maxI=i;
-		while(i<n){
-			j = i;
-			if (D[j][j]>max)
-			{
-				max = D[j][j]; maxI = j;
-			}
-			if (D[j][j]<min)
-			{
-				min = D[j][j]; minI = j;
-			}
-			j = n-i-1;
-			if (D[j][j]>max)
-			{
-				max = D[j][j]; maxI = j;
-			}
-			if (D[j][j]<min)
-			{
-				min = D[j][j]; minI = j;
-			}
-			i++;
-		}
-		printf("min D[%d][%d] = %f\n", minI, minI, min);
-		printf("max D[%d][%d] = %f\n", maxI, maxI, max);
-		i = max; max = min; min = i; // swap
-		D[minI][minI] = min; D[maxI][maxI] = max;
+        max = D[0][0]; min = D[0][0];
+        for(i=0;i<n;i++)
+            for(j=0;j<n;j++)
+                if ( (i==j) | ((n-i-1)==j) )
+                {
+                    if ( D[i][j] > max )
+                        max = D[i][j];
+                    if ( D[i][j] < min )
+                        min = D[i][j];
+                }
+		printf("min D = %f\n", min);
+		printf("max D = %f\n", max);
+        for(i=0;i<n;i++)
+            for(j=0;j<n;j++)
+                if ( (i==j) | ((n-i-1)==j) )
+                {
+                    if ( D[i][j] == max )
+                        D[i][j] = min;
+                    else
+                        if ( D[i][j] == min )
+                            D[i][j] = max;
+                }
 		// Print swapped D
         printf("Swapped  D:\n"); for(i=0; i<n; i++) { for(j=0; j<n; j++) printf("%8.3f ",D[i][j]); printf("\n"); }
 	}
