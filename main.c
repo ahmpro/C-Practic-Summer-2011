@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 #include "task02.h"
 #include "task05.h"
@@ -18,6 +20,8 @@ int main(){
     Task[24] = 1; Func[24] = task24;
     Task[26] = 1; Func[26] = task26;
     Task[27] = 1; Func[27] = task27;
+
+    srand( (unsigned) time(NULL) );
 
     printf("Select Task: ");
     scanf_s("%d", &n);
