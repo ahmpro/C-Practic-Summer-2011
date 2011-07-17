@@ -3,6 +3,7 @@
 #include "task02.h"
 #include "task05.h"
 #include "task24.h"
+#include "task26.h"
 #include "task27.h"
 
 int Task[32] = {0};
@@ -13,6 +14,7 @@ int main(){
     Task[2] = 1; Func[2] = task02;
     Task[5] = 1; Func[5] = task05;
     Task[24] = 1; Func[24] = task24;
+    Task[26] = 1; Func[26] = task26;
     Task[27] = 1; Func[27] = task27;
 
     printf("Select Task: ");
