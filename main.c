@@ -19,7 +19,7 @@ int main(){
     if ( (n<1) & (n>31) | !Task[n])
         printf("Task incorrect or unavialable");
     else
-        Func[n];
+        Func[n]();
 
 	return 0;
 }
