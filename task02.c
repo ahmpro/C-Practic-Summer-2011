@@ -8,8 +8,11 @@ void task02()
     int i, j, n, k;
 	float min, max;
 
-    printf("Enter the number of dimensions: ");
+    FILE *io = fopen("io\\02.output", "w");
+
+    printf("Enter the number of dimensions: "); fprintf(io, "Enter the number of dimensions: ");
     scanf_s("%d",&n);
+    fprintf(io, "%d\n", n);
 
     if ( (n>10) & (n<2) )
     { printf("Incorrect dimension"); }
@@ -19,8 +22,8 @@ void task02()
         for(i=0; i<n; i++)
             for(j=0; j<n; j++) { A[i][j] = 0.0+rand()%15; B[i][j] = 0.0+rand()%15; }
         // Print A,B
-        printf("A:\n"); for(i=0; i<n; i++) { for(j=0; j<n; j++) printf("%8.3f ",A[i][j]); printf("\n"); }
-        printf("B:\n"); for(i=0; i<n; i++){ for(j=0; j<n; j++) printf("%8.3f ",B[i][j]); printf("\n"); }
+        fprintf(io, "A:\n"); for(i=0; i<n; i++) { for(j=0; j<n; j++) fprintf(io, "%8.3f ",A[i][j]); fprintf(io, "\n"); }
+        fprintf(io, "B:\n"); for(i=0; i<n; i++){ for(j=0; j<n; j++) fprintf(io, "%8.3f ",B[i][j]); fprintf(io, "\n"); }
         // F=B-E
         for(i=0; i<n; i++)
             for(j=0; j<n; j++)
@@ -33,7 +36,7 @@ void task02()
                 D[i][j] += sqrt((i^2+j^2)+0.0);
             }
         // Print D
-        printf("D:\n"); for(i=0; i<n; i++) { for(j=0; j<n; j++) printf("%8.3f ",D[i][j]); printf("\n"); }
+        fprintf(io, "D:\n"); for(i=0; i<n; i++) { for(j=0; j<n; j++) fprintf(io, "%8.3f ",D[i][j]); fprintf(io, "\n"); }
 		//
         max = D[0][0]; min = D[0][0];
         for(i=0;i<n;i++)
@@ -45,8 +48,8 @@ void task02()
                     if ( D[i][j] < min )
                         min = D[i][j];
                 }
-		printf("min D = %f\n", min);
-		printf("max D = %f\n", max);
+		fprintf(io, "min D = %f\n", min);
+		fprintf(io, "max D = %f\n", max);
         for(i=0;i<n;i++)
             for(j=0;j<n;j++)
                 if ( (i==j) | ((n-i-1)==j) )
@@ -58,6 +61,8 @@ void task02()
                             D[i][j] = max;
                 }
 		// Print swapped D
-        printf("Swapped  D:\n"); for(i=0; i<n; i++) { for(j=0; j<n; j++) printf("%8.3f ",D[i][j]); printf("\n"); }
+        fprintf(io, "Swapped  D:\n"); for(i=0; i<n; i++) { for(j=0; j<n; j++) fprintf(io, "%8.3f ",D[i][j]); fprintf(io, "\n"); }
+
+        fclose(io);
 	}
 }

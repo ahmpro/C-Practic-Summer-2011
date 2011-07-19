@@ -6,17 +6,21 @@ void task26()
     float A[10][10] = {0}, C[10][10] = {0}, X[10][1] = {0}, Bi, Chart[10] = {0};
     int n, i, j;
 
-    printf("Enter the number of dimensions: ");
+    FILE *io = fopen("io\\26.output", "w");
+
+    printf("Enter the number of dimensions: "); fprintf(io, "Enter the number of dimensions: ");
     scanf_s("%d",&n);
+    fprintf(io, "%d\n", n);
+
     if ( (n>10) & (n<2) )
-    { printf("Incorrect dimension"); }
+    { fprintf(io, "Incorrect dimension"); }
     else
     {
         // fill A
         for(i=0; i<n; i++)
             for(j=0; j<n; j++) { A[i][j] = 0.0+rand()%15; }
         // Print A
-        printf("A:\n"); for(i=0; i<n; i++) { for(j=0; j<n; j++) printf("%8.3f ",A[i][j]); printf("\n"); }
+        fprintf(io, "A:\n"); for(i=0; i<n; i++) { for(j=0; j<n; j++) fprintf(io, "%8.3f ",A[i][j]); fprintf(io, "\n"); }
         // C=A-E
         for(i=0; i<n; i++)
             for(j=0; j<n; j++)
@@ -28,7 +32,7 @@ void task26()
                 X[i][0] += C[i][j]*Bi;
             }
         // Print X
-        printf("X:\n"); for(i=0; i<n; i++) { printf("%8.3f \n",X[i][0]); }
+        fprintf(io, "X:\n"); for(i=0; i<n; i++) { fprintf(io, "%8.3f \n",X[i][0]); }
         //
         for(i=0;i<n;i++){
             for(j=0;j<n;j++){
@@ -37,10 +41,11 @@ void task26()
             Chart[i] /= n;
         }
         for(i=0;i<n;i++){
-            printf("%2i :", (int)Chart[i] );
+            fprintf(io, "%2i :", (int)Chart[i] );
             for(j=0;j<(int)Chart[i];j++)
-                printf("*");
-            printf("\n");
+                fprintf(io, "*");
+            fprintf(io, "\n");
         }
     }
+    fclose(io);
 }

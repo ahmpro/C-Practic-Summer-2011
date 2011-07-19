@@ -3,21 +3,32 @@
 
 void task27()
 {
-    unsigned long A;
-    unsigned C[10] = {0}, i;
+    char A[255];
+    unsigned C[10] = {0}, i = 0;
 
-    printf("Enter A: ");
-    scanf_s("%li", &A);
+    FILE *io = fopen("io\\27.output", "w");
+    FILE *inp = fopen("io\\27.input", "r");
 
-    while(A>0){
-        C[ A%10 ] += 1;
-        A /= 10;
+    printf("Used file 'io\\27.input'\n"); fprintf(io, "Used file 'io\\27.input'\n");
+
+    fgets(A, 255, inp); 
+
+    printf("A = "); fprintf(io, "A = ");
+
+    while(A[i]>0){
+        C[ A[i]-'0' ] += 1;
+        printf("%c", A[i]);
+        fprintf(io, "%c", A[i]);
+        i++;
     }
+    printf("\n"); fprintf(io, "\n");
 
     for(i=0;i<10;i++){
-            printf("%i :", i);
+            fprintf(io, "%i :", i);
             for(;C[i]>0;C[i]--)
-                printf("*");
-            printf("\n");
+                fprintf(io, "*");
+            fprintf(io, "\n");
     }
+    fclose(io);
+    fclose(inp);
 }

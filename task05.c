@@ -7,8 +7,11 @@ void task05()
     int i,j,n;
     float maxA, maxB, maxC;
 
-    printf("Enter the number of dimensions: ");
+    FILE *io = fopen("io\\05.output", "w");
+
+    printf("Enter the number of dimensions: "); fprintf(io, "Enter the number of dimensions: ");
     scanf_s("%d",&n);
+    fprintf(io, "%d\n", n);
 
     for(i=0; i<n; i++){
         for(j=0; j<n; j++)
@@ -20,11 +23,11 @@ void task05()
         }
     }
     // Print A,B,C
-    printf("A:\n"); for(i=0; i<n; i++) { for(j=0; j<n; j++) { printf("%8.3f ",A[i][j]); } printf("\n"); }
-    printf("B:\n"); for(i=0; i<n; i++) { for(j=0; j<n; j++) { printf("%8.3f ",B[i][j]); } printf("\n"); }
-    printf("C:\n"); for(i=0; i<n; i++) { for(j=0; j<n; j++) { printf("%8.3f ",C[i][j]); } printf("\n"); }
+    fprintf(io, "A:\n"); for(i=0; i<n; i++) { for(j=0; j<n; j++) { fprintf(io, "%8.3f ",A[i][j]); } fprintf(io, "\n"); }
+    fprintf(io, "B:\n"); for(i=0; i<n; i++) { for(j=0; j<n; j++) { fprintf(io, "%8.3f ",B[i][j]); } fprintf(io, "\n"); }
+    fprintf(io, "C:\n"); for(i=0; i<n; i++) { for(j=0; j<n; j++) { fprintf(io, "%8.3f ",C[i][j]); } fprintf(io, "\n"); }
     // Print X
-    printf("X:\n"); for(i=0; i<n; i++) { printf("%8.3f\n",X[i][1]); }
+    fprintf(io, "X:\n"); for(i=0; i<n; i++) { fprintf(io, "%8.3f\n",X[i][1]); }
     //
     maxA = A[0][0]; maxB = B[0][0]; maxC = C[0][0];
     for(i=0;i<n;i++){
@@ -38,7 +41,9 @@ void task05()
         }
     }
     // print Charts
-    printf("\nmaxA(%3i): ", (int)maxA ); for(i=0;i<(int)maxA;i++) printf("*");
-    printf("\nmaxB(%3i): ", (int)maxB ); for(i=0;i<(int)maxB;i++) printf("*");
-    printf("\nmaxC(%3i): ", (int)maxC ); for(i=0;i<(int)maxC;i++) printf("*");
+    fprintf(io, "\nmaxA(%3i): ", (int)maxA ); for(i=0;i<(int)maxA;i++) fprintf(io, "*");
+    fprintf(io, "\nmaxB(%3i): ", (int)maxB ); for(i=0;i<(int)maxB;i++) fprintf(io, "*");
+    fprintf(io, "\nmaxC(%3i): ", (int)maxC ); for(i=0;i<(int)maxC;i++) fprintf(io, "*");
+
+    fclose(io);
 }
